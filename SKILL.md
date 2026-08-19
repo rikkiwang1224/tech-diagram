@@ -1,6 +1,6 @@
 ---
 name: tech-diagram
-description: Generate high-quality, aesthetic technical diagrams (architecture, flow, state) using SVG.
+description: Generate high-quality technical diagrams (architecture, flow, state) as native SVG using a Morandi dusty-pastel design system. Use when drawing architecture diagrams, flowcharts, sequence diagrams, or state machines.
 ---
 
 # Tech Diagram SVG Generator
@@ -9,22 +9,27 @@ You are an expert technical diagram designer. When the user asks to draw an arch
 
 ## 1. Design System & Aesthetics
 
-Your goal is to create diagrams that look like they belong in a high-quality technical blog or academic paper. The aesthetic is clean, modern, slightly muted, and highly structured.
+Your goal is to create diagrams that look like they belong in a high-quality technical blog or academic paper. The aesthetic is clean, highly structured, and Morandi: dusty pastels, never saturated Material colors.
 
 ### Color Palette Principles
+The look is **Morandi / dusty pastel**: grayed, low-chroma fills, slightly deeper matching borders and text. Diagrams should look like a calm technical essay, not a Material UI mock.
+
 **DO NOT hardcode strict semantic meanings to specific colors.** Instead, follow these principles:
 1.  **Restraint:** Use a maximum of 3-4 distinct color hues per diagram.
-2.  **Contrast:** Use a very light pastel color for the fill, a darker matching color for the border, and an even darker matching color for the text.
+2.  **Contrast:** Use a very light dusty fill, a muted matching border, and a slightly darker matching text. Fill, border, and text stay in the same hue family.
 3.  **Consistency:** Group related concepts, layers, or components using the same color hue.
+4.  **No solid chromatic headers:** Section titles are text (or a light dashed panel). Never fill a header bar with saturated blue / green / purple.
 
-**Approved Muted Palette Options (Mix and match as needed, but keep it under 4 hues):**
-*   **Teal:** Fill `#E8F4F4` | Border `#2B8C8C` | Text `#1A5C5C`
-*   **Brown/Sand:** Fill `#F9F3EE` | Border `#9C7355` | Text `#5C402C`
-*   **Green:** Fill `#E8F5E9` | Border `#2E7D32` | Text `#1B5E20`
-*   **Terracotta/Rust:** Fill `#FCEEE9` | Border `#B95C3C` | Text `#8A381A`
-*   **Purple/Lavender:** Fill `#F4F0FA` | Border `#7E57C2` | Text `#4527A0`
-*   **Blue/Slate:** Fill `#E8F0FE` | Border `#1565C0` | Text `#0D47A1`
-*   **Neutral (Default):** Fill `#FFFFFF` | Border `#333333` | Text `#333333`
+**Approved palette — use these hex values as-is (sampled from the reference aesthetic). Mix at most 4 hues:**
+
+*   **Green:** Fill `#E1F6EF` | Border `#2D6250` | Text `#2D6250`
+*   **Purple:** Fill `#EEEDFF` | Border `#595091` | Text `#595091`
+*   **Terracotta:** Fill `#FAEDE7` | Border `#7E4534` | Text `#7E4534`
+*   **Blue (active / emphasis):** Fill `#CDE3FA` | Border `#4A78AC` | Text `#4A78AC`
+*   **Warm gray (inactive / alternate):** Fill `#F2EFE8` | Border `#5F5E5A` | Text `#5F5E5A`
+*   **Neutral:** Fill `#FFFFFF` | Border `#C2C2C0` | Text `#5F5E5A`
+
+**Forbidden (too saturated / Material):** `#1565C0`, `#0D47A1`, `#2E7D32`, `#1B5E20`, `#7E57C2`, `#4527A0`, `#B95C3C`, `#2B8C8C`. Do not invent bright primary blues, greens, or purples. Do not pick nearby-looking colors — copy the hex above.
 
 ### Shapes, Entities & Actions
 *   **Entities / States / Modules:** Use `<rect>` with slightly rounded corners (`rx="4"`). These represent the "nouns" of the system.
@@ -35,7 +40,7 @@ Your goal is to create diagrams that look like they belong in a high-quality tec
 *   **Actions / Verbs / RPC Calls:** **DO NOT put actions inside boxes.** Actions should be represented as **text labels placed directly on or next to the connecting arrows**.
 
 ### Lines & Connectors
-*   Color: `#333333` or matching the source node's border color.
+*   Color: connector gray `#868684` by default. If a line must be tinted, use that group's **border** color, never a vivid primary.
 *   Width: 1.5px stroke.
 *   Routing: Use `<path>` with **orthogonal routing** (straight lines and 90-degree turns). Avoid messy bezier curves unless strictly necessary for a specific flow.
 *   **Action Labels on Arrows:** When an arrow represents an action (e.g., "fetch data", "trigger event"), place a `<text>` element near the center of the arrow line. **CRITICAL: To prevent the line from striking through the text, you MUST draw a `<rect>` behind the text with `fill="#FFFFFF"` (or the background color) to mask the line.**
@@ -62,15 +67,15 @@ Your goal is to create diagrams that look like they belong in a high-quality tec
     <!-- Center X = 50 + (140/2) = 120 -->
     <!-- Center Y = 70 + (50/2) = 95. We set text y="91" to balance the two lines -->
     <text x="120" y="91" font-family="system-ui, sans-serif" text-anchor="middle">
-      <tspan x="120" dy="0" font-size="13" font-weight="600" fill="#333333">Main Title</tspan>
-      <tspan x="120" dy="16" font-size="11" fill="#333333" opacity="0.8">Sub description</tspan>
+      <tspan x="120" dy="0" font-size="13" font-weight="600" fill="#5F5E5A">Main Title</tspan>
+      <tspan x="120" dy="16" font-size="11" fill="#5F5E5A" opacity="0.8">Sub description</tspan>
     </text>
     ```
 4.  **Action Label on Arrow Example (CRITICAL: Masking the line):**
     ```xml
     <!-- Arrow from (100, 100) to (200, 100). Center is (150, 100). -->
     <!-- 1. Draw the line FIRST -->
-    <path d="M 100 100 L 200 100" fill="none" stroke="#333333" stroke-width="1.5" marker-end="url(#arrow)" />
+    <path d="M 100 100 L 200 100" fill="none" stroke="#868684" stroke-width="1.5" marker-end="url(#arrow)" />
     <!-- 2. Draw a white rect to mask the line behind the text. Calculate width based on text length. -->
     <rect x="130" y="92" width="40" height="16" fill="#FFFFFF" />
     <!-- 3. Draw the text ON TOP of the white rect -->

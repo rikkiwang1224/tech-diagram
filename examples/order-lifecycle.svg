@@ -1,0 +1,66 @@
+<svg viewBox="0 0 720 280" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <marker id="arrow-green" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#2D6250" />
+    </marker>
+    <marker id="arrow-purple" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#595091" />
+    </marker>
+    <marker id="arrow-blue" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#4A78AC" />
+    </marker>
+    <marker id="arrow-terracotta" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#7E4534" />
+    </marker>
+  </defs>
+
+  <rect x="16" y="16" width="688" height="248" fill="#FBFBFB" fill-opacity="0.6" stroke="#C2C2C0" stroke-width="1.5" stroke-dasharray="6 4" rx="8" />
+  <text x="32" y="40" font-family="system-ui, sans-serif" font-size="12" fill="#5F5E5A" font-weight="600">Order Lifecycle</text>
+
+  <path d="M 160 105 L 210 105" fill="none" stroke="#2D6250" stroke-width="1.5" marker-end="url(#arrow-green)" />
+  <path d="M 330 105 L 380 105" fill="none" stroke="#595091" stroke-width="1.5" marker-end="url(#arrow-purple)" />
+  <path d="M 510 105 L 560 105" fill="none" stroke="#4A78AC" stroke-width="1.5" marker-end="url(#arrow-blue)" />
+  <path d="M 100 130 L 100 215 L 210 215" fill="none" stroke="#7E4534" stroke-width="1.5" marker-end="url(#arrow-terracotta)" />
+  <path d="M 270 130 L 270 190" fill="none" stroke="#7E4534" stroke-width="1.5" marker-end="url(#arrow-terracotta)" />
+
+  <rect x="167" y="97" width="36" height="16" fill="#FFFFFF" />
+  <text x="185" y="109" font-family="system-ui, sans-serif" font-size="11" fill="#2D6250" text-anchor="middle">pay()</text>
+  <rect x="332" y="97" width="52" height="16" fill="#FFFFFF" />
+  <text x="358" y="109" font-family="system-ui, sans-serif" font-size="11" fill="#595091" text-anchor="middle">fulfill()</text>
+  <rect x="517" y="97" width="40" height="16" fill="#FFFFFF" />
+  <text x="537" y="109" font-family="system-ui, sans-serif" font-size="11" fill="#4A78AC" text-anchor="middle">ship()</text>
+  <rect x="114" y="207" width="52" height="16" fill="#FFFFFF" />
+  <text x="140" y="219" font-family="system-ui, sans-serif" font-size="11" fill="#7E4534" text-anchor="middle">cancel()</text>
+  <rect x="248" y="152" width="44" height="16" fill="#FFFFFF" />
+  <text x="270" y="164" font-family="system-ui, sans-serif" font-size="11" fill="#7E4534" text-anchor="middle">timeout</text>
+
+  <rect x="40" y="80" width="120" height="50" fill="#F2EFE8" stroke="#5F5E5A" stroke-width="1" rx="4" />
+  <text x="100" y="101" font-family="system-ui, sans-serif" text-anchor="middle">
+    <tspan x="100" dy="0" font-size="13" font-weight="600" fill="#5F5E5A">Created</tspan>
+    <tspan x="100" dy="16" font-size="11" fill="#5F5E5A" opacity="0.8">draft order</tspan>
+  </text>
+
+  <rect x="210" y="80" width="120" height="50" fill="#E1F6EF" stroke="#2D6250" stroke-width="1.5" rx="4" />
+  <text x="270" y="101" font-family="system-ui, sans-serif" text-anchor="middle">
+    <tspan x="270" dy="0" font-size="13" font-weight="600" fill="#2D6250">Paid</tspan>
+    <tspan x="270" dy="16" font-size="11" fill="#2D6250" opacity="0.8">payment captured</tspan>
+  </text>
+
+  <rect x="380" y="80" width="130" height="50" fill="#EEEDFF" stroke="#595091" stroke-width="1.5" stroke-dasharray="4 4" rx="4" />
+  <text x="445" y="101" font-family="system-ui, sans-serif" text-anchor="middle">
+    <tspan x="445" dy="0" font-size="13" font-weight="600" fill="#595091">Fulfilling</tspan>
+    <tspan x="445" dy="16" font-size="11" fill="#595091" opacity="0.8">transient</tspan>
+  </text>
+
+  <rect x="560" y="80" width="120" height="50" fill="#CDE3FA" stroke="#4A78AC" stroke-width="1.5" rx="4" />
+  <text x="620" y="101" font-family="system-ui, sans-serif" text-anchor="middle">
+    <tspan x="620" dy="0" font-size="13" font-weight="600" fill="#4A78AC">Shipped</tspan>
+    <tspan x="620" dy="16" font-size="11" fill="#4A78AC" opacity="0.8">terminal</tspan>
+  </text>
+
+  <rect x="210" y="190" width="120" height="50" fill="#FAEDE7" stroke="#7E4534" stroke-width="1.5" stroke-dasharray="4 4" rx="4" />
+  <text x="270" y="211" font-family="system-ui, sans-serif" text-anchor="middle">
+    <tspan x="270" dy="0" font-size="13" font-weight="600" fill="#7E4534">Cancelled</tspan>
+    <tspan x="270" dy="16" font-size="11" fill="#7E4534" opacity="0.8">terminal</tspan>
+  </text>
+</svg>

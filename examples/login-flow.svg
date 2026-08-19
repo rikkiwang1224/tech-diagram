@@ -1,0 +1,51 @@
+<svg viewBox="0 0 720 280" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <marker id="arrow-gray" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#868684" />
+    </marker>
+    <marker id="arrow-green" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#2D6250" />
+    </marker>
+    <marker id="arrow-purple" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#595091" />
+    </marker>
+  </defs>
+
+  <rect x="16" y="16" width="688" height="248" fill="#FBFBFB" fill-opacity="0.6" stroke="#C2C2C0" stroke-width="1.5" stroke-dasharray="6 4" rx="8" />
+  <text x="32" y="40" font-family="system-ui, sans-serif" font-size="12" fill="#5F5E5A" font-weight="600">Login Context</text>
+
+  <path d="M 180 110 L 250 110" fill="none" stroke="#868684" stroke-width="1.5" marker-end="url(#arrow-gray)" />
+  <path d="M 410 110 L 490 110" fill="none" stroke="#2D6250" stroke-width="1.5" marker-end="url(#arrow-green)" />
+  <path d="M 570 150 L 570 190" fill="none" stroke="#595091" stroke-width="1.5" marker-end="url(#arrow-purple)" />
+
+  <rect x="198" y="102" width="36" height="16" fill="#FFFFFF" />
+  <text x="216" y="114" font-family="system-ui, sans-serif" font-size="11" fill="#5F5E5A" text-anchor="middle">POST</text>
+  <rect x="428" y="102" width="32" height="16" fill="#FFFFFF" />
+  <text x="444" y="114" font-family="system-ui, sans-serif" font-size="11" fill="#2D6250" text-anchor="middle">RPC</text>
+  <rect x="548" y="162" width="44" height="16" fill="#FFFFFF" />
+  <text x="570" y="174" font-family="system-ui, sans-serif" font-size="11" fill="#595091" text-anchor="middle">query</text>
+
+  <rect x="40" y="85" width="140" height="50" fill="#FFFFFF" stroke="#C2C2C0" stroke-width="1" rx="4" />
+  <text x="110" y="106" font-family="system-ui, sans-serif" text-anchor="middle">
+    <tspan x="110" dy="0" font-size="13" font-weight="600" fill="#5F5E5A">External Client</tspan>
+    <tspan x="110" dy="16" font-size="11" fill="#5F5E5A" opacity="0.8">Browser / App</tspan>
+  </text>
+
+  <rect x="250" y="80" width="160" height="60" fill="#E1F6EF" stroke="#2D6250" stroke-width="1.5" rx="4" />
+  <text x="330" y="106" font-family="system-ui, sans-serif" text-anchor="middle">
+    <tspan x="330" dy="0" font-size="13" font-weight="600" fill="#2D6250">API Gateway</tspan>
+    <tspan x="330" dy="16" font-size="11" fill="#2D6250" opacity="0.8">Auth &amp; Rate Limit</tspan>
+  </text>
+
+  <rect x="490" y="80" width="160" height="60" fill="#EEEDFF" stroke="#595091" stroke-width="1.5" rx="4" />
+  <text x="570" y="106" font-family="system-ui, sans-serif" text-anchor="middle">
+    <tspan x="570" dy="0" font-size="13" font-weight="600" fill="#595091">Auth Service</tspan>
+    <tspan x="570" dy="16" font-size="11" fill="#595091" opacity="0.8">Issue JWT</tspan>
+  </text>
+
+  <rect x="490" y="190" width="160" height="50" fill="#FAEDE7" stroke="#7E4534" stroke-width="1.5" rx="4" />
+  <text x="570" y="211" font-family="system-ui, sans-serif" text-anchor="middle">
+    <tspan x="570" dy="0" font-size="13" font-weight="600" fill="#7E4534">User Store</tspan>
+    <tspan x="570" dy="16" font-size="11" fill="#7E4534" opacity="0.8">credentials &amp; profile</tspan>
+  </text>
+</svg>

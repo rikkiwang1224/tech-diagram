@@ -1,0 +1,68 @@
+<svg viewBox="0 0 700 400" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <marker id="arrow-gray" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#868684" />
+    </marker>
+    <marker id="arrow-green" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#2D6250" />
+    </marker>
+    <marker id="arrow-purple" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#595091" />
+    </marker>
+    <marker id="arrow-warm" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#5F5E5A" />
+    </marker>
+    <pattern id="hatch" width="8" height="8" patternUnits="userSpaceOnUse">
+      <path d="M-2,10 l12,-12 M-2,2 l4,-4 M6,10 l4,-4" stroke="#E0E0E0" stroke-width="2"/>
+    </pattern>
+  </defs>
+
+  <rect x="20" y="20" width="660" height="360" fill="#FBFBFB" fill-opacity="0.6" stroke="#C2C2C0" stroke-width="1.5" stroke-dasharray="6 4" rx="8" />
+  <text x="35" y="45" font-family="system-ui, sans-serif" font-size="12" fill="#5F5E5A" font-weight="600">Order Processing Context</text>
+
+  <path d="M 120 120 L 120 160" fill="none" stroke="#868684" stroke-width="1.5" marker-end="url(#arrow-gray)" />
+  <path d="M 190 200 L 240 200" fill="none" stroke="#2D6250" stroke-width="1.5" marker-end="url(#arrow-green)" />
+  <path d="M 330 235 L 330 270" fill="none" stroke="#595091" stroke-width="1.5" marker-end="url(#arrow-purple)" />
+  <path d="M 410 200 L 460 200" fill="none" stroke="#595091" stroke-width="1.5" marker-end="url(#arrow-purple)" />
+  <path d="M 560 230 L 560 270" fill="none" stroke="#5F5E5A" stroke-width="1.5" marker-end="url(#arrow-warm)" />
+
+  <rect x="200" y="192" width="30" height="16" fill="#FFFFFF" />
+  <text x="215" y="204" font-family="system-ui, sans-serif" font-size="11" fill="#2D6250" text-anchor="middle">RPC</text>
+  <rect x="420" y="192" width="30" height="16" fill="#FFFFFF" />
+  <text x="435" y="204" font-family="system-ui, sans-serif" font-size="11" fill="#595091" text-anchor="middle">Pub</text>
+
+  <rect x="50" y="70" width="140" height="50" fill="#FFFFFF" stroke="#C2C2C0" stroke-width="1" rx="4" />
+  <text x="120" y="91" font-family="system-ui, sans-serif" text-anchor="middle">
+    <tspan x="120" dy="0" font-size="13" font-weight="600" fill="#5F5E5A">External Client</tspan>
+    <tspan x="120" dy="16" font-size="11" fill="#5F5E5A" opacity="0.8">REST / POST</tspan>
+  </text>
+
+  <rect x="50" y="170" width="140" height="60" fill="#E1F6EF" stroke="#2D6250" stroke-width="1.5" rx="4" />
+  <text x="120" y="196" font-family="system-ui, sans-serif" text-anchor="middle">
+    <tspan x="120" dy="0" font-size="13" font-weight="600" fill="#2D6250">API Gateway</tspan>
+    <tspan x="120" dy="16" font-size="11" fill="#2D6250" opacity="0.8">Auth &amp; Rate Limit</tspan>
+  </text>
+
+  <rect x="250" y="165" width="160" height="70" fill="#EEEDFF" stroke="#595091" stroke-width="1.5" rx="4" />
+  <text x="330" y="196" font-family="system-ui, sans-serif" text-anchor="middle">
+    <tspan x="330" dy="0" font-size="13" font-weight="600" fill="#595091">Order Engine</tspan>
+    <tspan x="330" dy="16" font-size="11" fill="#595091" opacity="0.8">State Machine Tx</tspan>
+  </text>
+
+  <rect x="250" y="280" width="160" height="40" fill="url(#hatch)" stroke="#C2C2C0" stroke-width="1" rx="4" />
+  <text x="330" y="304" font-family="system-ui, sans-serif" text-anchor="middle">
+    <tspan x="330" dy="0" font-size="11" font-weight="600" fill="#5F5E5A" letter-spacing="1">SYNC BARRIER (DB)</tspan>
+  </text>
+
+  <rect x="470" y="170" width="180" height="60" fill="#F2EFE8" stroke="#5F5E5A" stroke-width="1.5" rx="30" />
+  <text x="560" y="196" font-family="system-ui, sans-serif" text-anchor="middle">
+    <tspan x="560" dy="0" font-size="13" font-weight="600" fill="#5F5E5A">Message Bus</tspan>
+    <tspan x="560" dy="16" font-size="11" fill="#5F5E5A" opacity="0.8">topic: order.created</tspan>
+  </text>
+
+  <rect x="470" y="280" width="180" height="60" fill="#FAEDE7" stroke="#7E4534" stroke-width="1.5" rx="4" />
+  <text x="560" y="306" font-family="system-ui, sans-serif" text-anchor="middle">
+    <tspan x="560" dy="0" font-size="13" font-weight="600" fill="#7E4534">Inventory Worker</tspan>
+    <tspan x="560" dy="16" font-size="11" fill="#7E4534" opacity="0.8">Async deduction</tspan>
+  </text>
+</svg>
