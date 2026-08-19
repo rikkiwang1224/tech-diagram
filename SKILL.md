@@ -1,6 +1,6 @@
 ---
+name: tech-diagram
 description: Generate high-quality, aesthetic technical diagrams (architecture, flow, state) using SVG.
-globs: *
 ---
 
 # Tech Diagram SVG Generator
