@@ -34,7 +34,7 @@ The look is **Morandi / dusty pastel**: grayed, low-chroma fills, slightly deepe
 ### Shapes, Entities & Actions
 *   **Entities / States / Modules:** Use `<rect>` with slightly rounded corners (`rx="4"`). These represent the "nouns" of the system.
 *   **Buses / Channels / Queues:** Pill-shaped `<rect>` (`rx="20"`).
-*   **Boundaries / Contexts / Grouping:** Fill `transparent` or `#FBFBFB` (with opacity), Border `#BDBDBD` (1.5px dashed), Text `#666666`.
+*   **Boundaries / Contexts / Grouping:** Fill `#FFFFFF` or `transparent`, Border `#C2C2C0` (1.5px dashed), Text `#5F5E5A`. Do not use a gray translucent panel.
 *   **Dynamic / Transient States:** Use a dashed border (`stroke-dasharray="4 4"`) with any of the palette colors.
 *   **Processing / Transition / Blocking:** Use an SVG `<pattern>` with diagonal lines (hatch pattern).
 *   **Actions / Verbs / RPC Calls:** **DO NOT put actions inside boxes.** Actions should be represented as **text labels placed directly on or next to the connecting arrows**.
@@ -43,7 +43,7 @@ The look is **Morandi / dusty pastel**: grayed, low-chroma fills, slightly deepe
 *   Color: connector gray `#868684` by default. If a line must be tinted, use that group's **border** color, never a vivid primary.
 *   Width: 1.5px stroke.
 *   Routing: Use `<path>` with **orthogonal routing** (straight lines and 90-degree turns). Avoid messy bezier curves unless strictly necessary for a specific flow.
-*   **Action Labels on Arrows:** When an arrow represents an action (e.g., "fetch data", "trigger event"), place a `<text>` element near the center of the arrow line. **CRITICAL: To prevent the line from striking through the text, you MUST draw a `<rect>` behind the text with `fill="#FFFFFF"` (or the background color) to mask the line.**
+*   **Action Labels on Arrows:** Place a `<text>` element near the arrow, slightly offset from the stroke (above a horizontal line, or beside a vertical line). **Do not draw a background `<rect>` behind the label.** Labels are transparent. Never sit the text directly on the path, or the line will strike through the glyphs.
 
 ### Typography & Layout
 *   Font Family: `system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif`
@@ -52,7 +52,10 @@ The look is **Morandi / dusty pastel**: grayed, low-chroma fills, slightly deepe
 
 ## 2. SVG Construction Guidelines
 
-1.  **Container:** Always wrap in `<svg viewBox="0 0 WIDTH HEIGHT" xmlns="http://www.w3.org/2000/svg">`.
+1.  **Container:** Always wrap in `<svg viewBox="0 0 WIDTH HEIGHT" xmlns="http://www.w3.org/2000/svg">`. Draw a full-canvas white background first so the diagram stays white on dark pages:
+    ```xml
+    <rect width="WIDTH" height="HEIGHT" fill="#FFFFFF"/>
+    ```
 2.  **Defs:** Always include a `<defs>` section for markers and patterns.
     *   **Bulletproof Hatch Pattern:**
         ```xml
@@ -71,15 +74,12 @@ The look is **Morandi / dusty pastel**: grayed, low-chroma fills, slightly deepe
       <tspan x="120" dy="16" font-size="11" fill="#5F5E5A" opacity="0.8">Sub description</tspan>
     </text>
     ```
-4.  **Action Label on Arrow Example (CRITICAL: Masking the line):**
+4.  **Action Label on Arrow Example (offset, no background):**
     ```xml
     <!-- Arrow from (100, 100) to (200, 100). Center is (150, 100). -->
-    <!-- 1. Draw the line FIRST -->
     <path d="M 100 100 L 200 100" fill="none" stroke="#868684" stroke-width="1.5" marker-end="url(#arrow)" />
-    <!-- 2. Draw a white rect to mask the line behind the text. Calculate width based on text length. -->
-    <rect x="130" y="92" width="40" height="16" fill="#FFFFFF" />
-    <!-- 3. Draw the text ON TOP of the white rect -->
-    <text x="150" y="104" font-family="system-ui, sans-serif" font-size="11" fill="#666666" text-anchor="middle">fetch()</text>
+    <!-- Label sits above the stroke; no masking rect -->
+    <text x="150" y="94" font-family="system-ui, sans-serif" font-size="11" fill="#5F5E5A" text-anchor="middle">fetch()</text>
     ```
 5.  **Clean Code:** Group logical parts with `<g>` and add comments `<!-- Module A -->`.
 
@@ -88,5 +88,5 @@ When requested to draw a diagram:
 1. Analyze the entities and group them logically. Assign one of the approved color hues to each logical group (max 3-4 hues per diagram).
 2. **Distinguish Nouns from Verbs:** Entities/States (Nouns) go into boxes. Actions/Events (Verbs) go onto the arrows connecting the boxes.
 3. Plan the layout coordinates (X, Y, Width, Height) mentally. Ensure generous spacing and alignment. Calculate the exact center points for all text.
-4. **Z-Index/Drawing Order:** Always draw lines FIRST, then masking rects for labels, then the text labels, then the main entity boxes. This prevents lines from rendering on top of text or boxes.
+4. **Z-Index/Drawing Order:** Always draw lines FIRST, then the text labels, then the main entity boxes. Do not insert opaque rects behind labels.
 5. Output the complete, raw SVG code inside an ````xml ... ```` block.
