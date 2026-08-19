@@ -26,8 +26,10 @@ The look is **Morandi / dusty pastel**: grayed, low-chroma fills, slightly deepe
 *   **Purple:** Fill `#EEEDFF` | Border `#595091` | Text `#595091`
 *   **Terracotta:** Fill `#FAEDE7` | Border `#7E4534` | Text `#7E4534`
 *   **Blue (active / emphasis):** Fill `#CDE3FA` | Border `#4A78AC` | Text `#4A78AC`
-*   **Warm gray (inactive / alternate):** Fill `#F2EFE8` | Border `#5F5E5A` | Text `#5F5E5A`
-*   **Neutral:** Fill `#FFFFFF` | Border `#C2C2C0` | Text `#5F5E5A`
+*   **Warm gray (inactive / alternate):** Fill `#F1EFE8` | Border `#5F5E5B` | Text `#444441`
+*   **Neutral (default entity):** Fill `#F1EFE8` | Border `#5F5E5B` | Text `#444441`
+
+Do **not** use pure `#FFFFFF` as a node fill. White is only for the canvas and grouping panels.
 
 **Forbidden (too saturated / Material):** `#1565C0`, `#0D47A1`, `#2E7D32`, `#1B5E20`, `#7E57C2`, `#4527A0`, `#B95C3C`, `#2B8C8C`. Do not invent bright primary blues, greens, or purples. Do not pick nearby-looking colors — copy the hex above.
 
@@ -43,7 +45,7 @@ The look is **Morandi / dusty pastel**: grayed, low-chroma fills, slightly deepe
 *   Color: connector gray `#868684` by default. If a line must be tinted, use that group's **border** color, never a vivid primary.
 *   Width: 1.5px stroke.
 *   Routing: Use `<path>` with **orthogonal routing** (straight lines and 90-degree turns). Avoid messy bezier curves unless strictly necessary for a specific flow.
-*   **Action Labels on Arrows:** Place a `<text>` element near the arrow, slightly offset from the stroke (above a horizontal line, or beside a vertical line). **Do not draw a background `<rect>` behind the label.** Labels are transparent. Never sit the text directly on the path, or the line will strike through the glyphs.
+*   **Action Labels on Arrows:** Place a `<text>` element near the arrow, slightly offset from the stroke (above a horizontal line, or beside a vertical line). **Do not draw a background `<rect>` behind the label.** Labels are transparent. Never sit the text directly on the path, or the line will strike through the glyphs. Event and action names are plain words — write `pay`, `fetch`, `timeout`, not `pay()` or `fetch()`. Readers already know they are functions.
 
 ### Typography & Layout
 *   Font Family: `system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif`
@@ -70,8 +72,8 @@ The look is **Morandi / dusty pastel**: grayed, low-chroma fills, slightly deepe
     <!-- Center X = 50 + (140/2) = 120 -->
     <!-- Center Y = 70 + (50/2) = 95. We set text y="91" to balance the two lines -->
     <text x="120" y="91" font-family="system-ui, sans-serif" text-anchor="middle">
-      <tspan x="120" dy="0" font-size="13" font-weight="600" fill="#5F5E5A">Main Title</tspan>
-      <tspan x="120" dy="16" font-size="11" fill="#5F5E5A" opacity="0.8">Sub description</tspan>
+      <tspan x="120" dy="0" font-size="13" font-weight="600" fill="#444441">Main Title</tspan>
+      <tspan x="120" dy="16" font-size="11" fill="#444441" opacity="0.8">Sub description</tspan>
     </text>
     ```
 4.  **Action Label on Arrow Example (offset, no background):**
@@ -79,7 +81,7 @@ The look is **Morandi / dusty pastel**: grayed, low-chroma fills, slightly deepe
     <!-- Arrow from (100, 100) to (200, 100). Center is (150, 100). -->
     <path d="M 100 100 L 200 100" fill="none" stroke="#868684" stroke-width="1.5" marker-end="url(#arrow)" />
     <!-- Label sits above the stroke; no masking rect -->
-    <text x="150" y="94" font-family="system-ui, sans-serif" font-size="11" fill="#5F5E5A" text-anchor="middle">fetch()</text>
+    <text x="150" y="94" font-family="system-ui, sans-serif" font-size="11" fill="#5F5E5A" text-anchor="middle">fetch</text>
     ```
 5.  **Clean Code:** Group logical parts with `<g>` and add comments `<!-- Module A -->`.
 
